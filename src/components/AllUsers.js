@@ -36,8 +36,19 @@ class AllUsers extends React.Component {
                   &nbsp;
                   <Mutation
                     mutation={DELETE_USER}
-                    refetchQueries={() => {
-                      return [{ query: FETCH_USERS }];
+                    update={(cache, { data: { deleteUser } }) => {
+                      const { allUsers } = cache.readQuery({
+                        query: FETCH_USERS
+                      });
+
+                      cache.writeQuery({
+                        query: FETCH_USERS,
+                        data: {
+                          allUsers: allUsers.filter(
+                            user => user.id !== deleteUser.id
+                          )
+                        }
+                      });
                     }}
                   >
                     {(deleteUser, { loading, error, data }) => {
