@@ -1,21 +1,32 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
+import { CREATE_USER_MUTATION } from "../graphql/mutations";
+import { QUERY_USERS } from "../graphql/quearies";
 
 const CreateUser = props => (
   <Mutation
-    mutation={gql`
-      mutation createUser(
-        $name: String!
-        $authProvider: AuthProviderSignupData!
-      ) {
-        createUser(name: $name, authProvider: $authProvider) {
-          id
-          name
-          email
-        }
+    mutation={CREATE_USER_MUTATION}
+    update={(cache, { data }) => {
+      console.log(data.createUser);
+      try {
+        const { allUsers } = cache.readQuery({
+          query: QUERY_USERS
+        });
+        cache.writeQuery({
+          query: QUERY_USERS,
+          data: {
+            allUsers: allUsers.push(data.createUser)
+          }
+        });
+      } catch (e) {
+        cache.writeQuery({
+          query: QUERY_USERS,
+          data: {
+            allUsers: [data.createUser]
+          }
+        });
       }
-    `}
+    }}
   >
     {(createUser, { loading, error, data }) => {
       if (loading) return <p>Loading...</p>;

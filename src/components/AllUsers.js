@@ -1,28 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Mutation, Query } from "react-apollo";
-import gql from "graphql-tag";
-
-const DELETE_USER = gql`
-  mutation deleteUser($id: ID!) {
-    deleteUser(id: $id) {
-      id
-    }
-  }
-`;
-const FETCH_USERS = gql`
-  query {
-    allUsers {
-      id
-      name
-    }
-  }
-`;
+import { DELETE_USER_MUTATION } from "../graphql/mutations";
+import { QUERY_USERS } from "../graphql/quearies";
 
 class AllUsers extends React.Component {
   render() {
     return (
-      <Query query={FETCH_USERS}>
+      <Query query={QUERY_USERS} fetchPolicy="network-only">
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
@@ -35,14 +20,14 @@ class AllUsers extends React.Component {
                   <Link to={`/userData/${id}`}>edit</Link>
                   &nbsp;
                   <Mutation
-                    mutation={DELETE_USER}
+                    mutation={DELETE_USER_MUTATION}
                     update={(cache, { data: { deleteUser } }) => {
                       const { allUsers } = cache.readQuery({
-                        query: FETCH_USERS
+                        query: QUERY_USERS
                       });
 
                       cache.writeQuery({
-                        query: FETCH_USERS,
+                        query: QUERY_USERS,
                         data: {
                           allUsers: allUsers.filter(
                             user => user.id !== deleteUser.id
