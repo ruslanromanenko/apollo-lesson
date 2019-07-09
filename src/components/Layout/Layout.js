@@ -1,22 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import classes from './Layout.module.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import classes from "./Layout.module.css";
 
 const Layout = ({ children }) => (
   <React.Fragment>
     <header>
-    <nav>
-      <Link to='/'> Home </Link>|
-      <Link to='/posts'> Posts </Link>|
-      <Link to='/newUser'> Create User </Link>|
-    </nav>
+      <nav>
+        <Link to="/"> Home </Link>|<Link to="/posts"> Posts </Link>|
+        <Link to="/newUser"> Create User </Link>|
+        <Link to="/sign-in"> Sign In </Link>|
+      </nav>
     </header>
-     <main>
-       { children }
-     </main>
-      <footer>
-          Footer
-      </footer>
+    <main>{children}</main>
+    <footer>Footer</footer>
   </React.Fragment>
 );
 

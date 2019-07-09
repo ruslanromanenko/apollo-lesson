@@ -25,3 +25,15 @@ export const DELETE_USER_MUTATION = gql`
     }
   }
 `;
+export const SIGNIN_USER_MUTATION = gql`
+  mutation signinUser($email: AUTH_PROVIDER_EMAIL) {
+    signinUser(email: $email) {
+      token
+      user {
+        id
+        name
+        email
+      }
+    }
+  }
+`;
