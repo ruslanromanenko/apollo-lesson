@@ -1,33 +1,10 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import { CREATE_USER_MUTATION } from "../graphql/mutations";
-import { QUERY_USERS } from "../graphql/quearies";
+import { CREATE_USER_MUTATION } from "../../graphql/mutations";
+import classes from "./CreateUser.module.css";
 
 const CreateUser = props => (
-  <Mutation
-    mutation={CREATE_USER_MUTATION}
-    update={(cache, { data }) => {
-      console.log(data.createUser);
-      try {
-        const { allUsers } = cache.readQuery({
-          query: QUERY_USERS
-        });
-        cache.writeQuery({
-          query: QUERY_USERS,
-          data: {
-            allUsers: allUsers.push(data.createUser)
-          }
-        });
-      } catch (e) {
-        cache.writeQuery({
-          query: QUERY_USERS,
-          data: {
-            allUsers: [data.createUser]
-          }
-        });
-      }
-    }}
-  >
+  <Mutation mutation={CREATE_USER_MUTATION}>
     {(createUser, { loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
@@ -49,6 +26,7 @@ const CreateUser = props => (
               }
             });
           }}
+          className={classes.CreateUserForm}
         >
           <label>
             Name

@@ -7,7 +7,7 @@ import AllUsers from "./components/AllUsers";
 import TopPosts from "./components/TopPosts";
 import Post from "./components/Post";
 import UserPosts from "./components/UserPosts";
-import CreateUser from "./components/CreateUser";
+import CreateUser from "./components/CreateUser/CreateUser";
 import UserData from "./components/UserData/UserData";
 
 const client = new ApolloClient({
