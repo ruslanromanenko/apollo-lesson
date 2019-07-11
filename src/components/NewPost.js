@@ -1,17 +1,9 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
+import { CREATE_POST_MUTATION } from "../graphql/mutations";
 
 const NewPost = props => (
-  <Mutation
-    mutation={gql`
-      mutation createPost($text: String!, $title: String!, $userId: ID!) {
-        createPost(text: $text, title: $title, userId: $userId) {
-          id
-        }
-      }
-    `}
-  >
+  <Mutation mutation={CREATE_POST_MUTATION}>
     {(createPost, { loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;

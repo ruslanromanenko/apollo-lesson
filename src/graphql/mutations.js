@@ -37,3 +37,11 @@ export const SIGNIN_USER_MUTATION = gql`
     }
   }
 `;
+
+export const CREATE_POST_MUTATION = gql`
+  mutation createPost($text: String!, $title: String!, $userId: ID!) {
+    createPost(text: $text, title: $title, userId: $userId) {
+      id
+    }
+  }
+`;

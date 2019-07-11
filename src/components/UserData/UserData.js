@@ -1,20 +1,11 @@
 import React from "react";
 import { Mutation, Query } from "react-apollo";
-import gql from "graphql-tag";
 import classes from "./UserData.module.css";
 import { UPDATE_USER_MUTATION } from "../../graphql/mutations";
+import { getQueryUserData } from "../../graphql/quearies";
 
 const UserData = props => (
-  <Query
-    query={gql`
-      query {
-        User(id: "${props.match.params.userId}") {
-          id
-          name
-        }
-      }
-    `}
-  >
+  <Query query={getQueryUserData(props.match.params.userId)}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;

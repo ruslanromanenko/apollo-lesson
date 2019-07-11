@@ -1,23 +1,9 @@
 import React from "react";
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import { getQueryUserPosts } from "../graphql/quearies";
 
 const UserPosts = props => (
-  <Query
-    query={gql`
-      query {
-        User(id: "${props.match.params.userId}") {
-          id
-          name          
-          posts{
-            id
-            text
-            title
-          }
-        }
-      }
-    `}
-  >
+  <Query query={getQueryUserPosts(props.match.params.userId)}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
