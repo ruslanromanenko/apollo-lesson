@@ -14,11 +14,11 @@ class AllUsers extends React.Component {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
           return (
-            <ul key="allUsers">
-              {data.allUsers.map(({ id, name }) => (
-                <li key={id}>
-                  <Link to={`/user/${id}`}>{name ? name : "incognoito"}</Link>
-                  <RenderProperties>
+            <RenderProperties>
+              <ul key="allUsers">
+                {data.allUsers.map(({ id, name }) => (
+                  <li key={id}>
+                    <Link to={`/user/${id}`}>{name ? name : "incognoito"}</Link>
                     <div>
                       &nbsp;
                       <Link to={`/userData/${id}`}>edit</Link>
@@ -60,10 +60,10 @@ class AllUsers extends React.Component {
                         }}
                       </Mutation>
                     </div>
-                  </RenderProperties>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </RenderProperties>
           );
         }}
       </Query>

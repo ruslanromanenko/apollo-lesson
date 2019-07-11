@@ -25,6 +25,13 @@ export const DELETE_USER_MUTATION = gql`
     }
   }
 `;
+export const DELETE_POST_MUTATION = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(id: $id) {
+      id
+    }
+  }
+`;
 export const SIGNIN_USER_MUTATION = gql`
   mutation signinUser($email: AUTH_PROVIDER_EMAIL) {
     signinUser(email: $email) {

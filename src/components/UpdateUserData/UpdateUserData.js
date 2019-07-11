@@ -1,6 +1,6 @@
 import React from "react";
 import { Mutation, Query } from "react-apollo";
-import classes from "./UserData.module.css";
+import classes from "./UpdateUserData.module.css";
 import { UPDATE_USER_MUTATION } from "../../graphql/mutations";
 import { getQueryUserData } from "../../graphql/quearies";
 

@@ -8,13 +8,14 @@ import TopPosts from "./components/TopPosts";
 import Post from "./components/Post/Post";
 import UserPosts from "./components/UserPosts";
 import CreateUser from "./components/CreateUser/CreateUser";
-import UserData from "./components/UserData/UserData";
+import UserData from "./components/UpdateUserData/UpdateUserData";
 import SigninUser from "./containers/SigninUser/SigninUser";
 import SignOut from "./components/SignOut";
 import Alert from "./components/Alert";
 import NewPost from "./components/NewPost";
 import UserInfo from "./components/UserInfo/UserInfo";
 import AllPosts from "./components/AllPosts/AllPosts";
+import NotFound from "./components/NotFound";
 
 const client = new ApolloClient({
   uri: "https://api.graph.cool/simple/v1/ciyz901en4j590185wkmexyex"
@@ -36,6 +37,7 @@ const App = () => (
           <Route exact path="/sign-in" component={SigninUser} />
           <Route exact path="/sign-out" component={SignOut} />
           <Route exact path="/alert" component={Alert} />
+          <Route component={NotFound} />
         </Switch>
       </Layout>
     </BrowserRouter>
