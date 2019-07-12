@@ -8,7 +8,7 @@ const Layout = ({ children }) => (
       <nav>
         <Link to="/"> Home </Link>|<Link to="/top-posts"> Top Posts </Link>|
         <Link to="/all-posts"> All Posts </Link>|
-        <Link to="/newUser"> Create User </Link>|
+        <Link to="/create-user"> Create User </Link>|
         <Link to="/sign-in"> Sign In </Link>|
         <Link to="/sign-out"> Sign Out </Link>|
       </nav>

@@ -4,7 +4,7 @@ import classes from "./UpdateUserData.module.css";
 import { UPDATE_USER_MUTATION } from "../../graphql/mutations";
 import { getQueryUserData } from "../../graphql/quearies";
 
-const UserData = props => (
+const UpdateUserData = props => (
   <Query query={getQueryUserData(props.match.params.userId)}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
@@ -50,4 +50,4 @@ const UserData = props => (
   </Query>
 );
 
-export default UserData;
+export default UpdateUserData;

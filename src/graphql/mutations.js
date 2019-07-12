@@ -17,6 +17,18 @@ export const UPDATE_USER_MUTATION = gql`
     }
   }
 `;
+export const UPDATE_POST_MUTATION = gql`
+  mutation updatePost($id: ID!, $text: String, $title: String) {
+    updatePost(id: $id, text: $text, title: $title) {
+      id
+      text
+      title
+      user {
+        id
+      }
+    }
+  }
+`;
 
 export const DELETE_USER_MUTATION = gql`
   mutation deleteUser($id: ID!) {

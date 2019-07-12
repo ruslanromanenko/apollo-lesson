@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Mutation, Query } from "react-apollo";
 import { DELETE_USER_MUTATION } from "../graphql/mutations";
 import { QUERY_USERS } from "../graphql/quearies";
-import { getToken } from "../services/token";
 import RenderProperties from "./RenderProperties/RenderProperties";
 
 class AllUsers extends React.Component {
@@ -21,7 +20,7 @@ class AllUsers extends React.Component {
                     <Link to={`/user/${id}`}>{name ? name : "incognoito"}</Link>
                     <div>
                       &nbsp;
-                      <Link to={`/userData/${id}`}>edit</Link>
+                      <Link to={`/update-user/${id}`}>edit</Link>
                       &nbsp;
                       <Mutation
                         mutation={DELETE_USER_MUTATION}

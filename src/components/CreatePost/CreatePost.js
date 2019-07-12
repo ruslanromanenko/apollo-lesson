@@ -1,8 +1,8 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import { CREATE_POST_MUTATION } from "../graphql/mutations";
+import { CREATE_POST_MUTATION } from "../../graphql/mutations";
 
-const NewPost = props => (
+const CreatePost = props => (
   <Mutation mutation={CREATE_POST_MUTATION}>
     {(createPost, { loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
@@ -42,4 +42,4 @@ const NewPost = props => (
   </Mutation>
 );
 
-export default NewPost;
+export default CreatePost;
