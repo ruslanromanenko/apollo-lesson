@@ -2,7 +2,7 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import classes from "./SigninUser.module.css";
 import { SIGNIN_USER_MUTATION } from "../../graphql/mutations";
-import { getToken } from "../../services/token";
+import { getToken } from "../../services/sessionStorage";
 import { Link } from "react-router-dom";
 
 class SigninUser extends React.Component {
@@ -29,6 +29,7 @@ class SigninUser extends React.Component {
                   }
                 }).then(({ data }) => {
                   sessionStorage.setItem("token", data.signinUser.token);
+                  sessionStorage.setItem("userId", data.signinUser.user.id);
                   this.props.history.push("/");
                 });
               }}

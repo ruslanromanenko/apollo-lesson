@@ -30,6 +30,29 @@ export const UPDATE_POST_MUTATION = gql`
   }
 `;
 
+export const UPDATE_COMMENT_MUTATION = gql`
+  mutation updateComment($id: ID!, $text: String) {
+    updateComment(id: $id, text: $text) {
+      id
+      text
+      user {
+        id
+      }
+    }
+  }
+`;
+export const DELETE_COMMENT_MUTATION = gql`
+  mutation deleteComment($id: ID!) {
+    deleteComment(id: $id) {
+      id
+      text
+      user {
+        id
+      }
+    }
+  }
+`;
+
 export const DELETE_USER_MUTATION = gql`
   mutation deleteUser($id: ID!) {
     deleteUser(id: $id) {
@@ -60,6 +83,14 @@ export const SIGNIN_USER_MUTATION = gql`
 export const CREATE_POST_MUTATION = gql`
   mutation createPost($text: String!, $title: String!, $userId: ID!) {
     createPost(text: $text, title: $title, userId: $userId) {
+      id
+    }
+  }
+`;
+
+export const CREATE_COMMENT_MUTATION = gql`
+  mutation createComment($text: String!, $postId: ID, $userId: ID) {
+    createComment(text: $text, postId: $postId, userId: $userId) {
       id
     }
   }

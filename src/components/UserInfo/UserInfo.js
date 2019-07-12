@@ -3,8 +3,8 @@ import { Query } from "react-apollo";
 import { getQueryUserData } from "../../graphql/quearies";
 import { Link } from "react-router-dom";
 
-const UserInfo = props => (
-  <Query query={getQueryUserData(props.match.params.userId)}>
+const UserInfo = ({ userId }) => (
+  <Query query={getQueryUserData(userId)}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;

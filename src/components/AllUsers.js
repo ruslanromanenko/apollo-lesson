@@ -17,7 +17,9 @@ class AllUsers extends React.Component {
               <ul key="allUsers">
                 {data.allUsers.map(({ id, name }) => (
                   <li key={id}>
-                    <Link to={`/user/${id}`}>{name ? name : "incognoito"}</Link>
+                    <Link to={`/user-data/${id}`}>
+                      {name ? name : "incognoito"}
+                    </Link>
                     <div>
                       &nbsp;
                       <Link to={`/update-user/${id}`}>edit</Link>

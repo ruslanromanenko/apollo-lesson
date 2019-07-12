@@ -71,3 +71,58 @@ export const getQueryUserData = id =>
         }
       }
     `;
+
+export const getQueryCommentsPost = id =>
+  gql`
+    query {
+      allComments(filter: { post: { id: "${id}" } }) {
+        id
+        text
+        user {
+          id
+          name
+        }
+      }
+    }
+  `;
+
+export const getQueryCommentsUser = userId =>
+  gql`
+    query {
+      allComments(filter: { user: { id: "${userId}" } }) {
+        id
+        text
+        user {
+          id
+          name
+        }
+      }
+    }
+  `;
+export const getQueryComment = id =>
+  gql`
+    query {
+      Comment(id: "${id}") {
+        id
+        text
+        user {
+          id
+          name
+        }
+      }
+    }
+  `;
+
+export const getQueryPostsUser = userId =>
+  gql`
+    query {
+      allPosts(filter: { user: { id: "${userId}" } }) {
+        id
+        text
+        user {
+          id
+          name
+        }
+      }
+    }
+  `;

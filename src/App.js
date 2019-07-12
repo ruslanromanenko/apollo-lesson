@@ -8,7 +8,7 @@ import TopPosts from "./components/TopPosts";
 import Post from "./components/Post/Post";
 import UserPosts from "./components/UserPosts";
 import CreateUser from "./components/CreateUser/CreateUser";
-import UserData from "./components/UpdateUserData/UpdateUserData";
+import UpdateUserData from "./components/UpdateUserData/UpdateUserData";
 import SigninUser from "./containers/SigninUser/SigninUser";
 import SignOut from "./components/SignOut";
 import Alert from "./components/Alert";
@@ -17,6 +17,8 @@ import AllPosts from "./components/AllPosts/AllPosts";
 import NotFound from "./components/NotFound";
 import UpdatePost from "./components/UpdatePost/UpdatePost";
 import CreatePost from "./components/CreatePost/CreatePost";
+import UserData from "./components/UserData/UserData";
+import UpdateComment from "./components/UpdateComment/UpdateComment";
 
 const client = new ApolloClient({
   uri: "https://api.graph.cool/simple/v1/ciyz901en4j590185wkmexyex"
@@ -34,7 +36,13 @@ const App = () => (
           <Route exact path="/post/:postId" component={Post} />
           <Route exact path="/update-post/:postId" component={UpdatePost} />
           <Route exact path="/user/:userId" component={UserInfo} />
-          <Route exact path="/update-user/:userId" component={UserData} />
+          <Route exact path="/update-user/:userId" component={UpdateUserData} />
+          <Route exact path="/user-data/:userId" component={UserData} />
+          <Route
+            exact
+            path="/update-comment/:commentId"
+            component={UpdateComment}
+          />
           <Route exact path="/user/:userId/new-post" component={CreatePost} />
           <Route exact path="/sign-in" component={SigninUser} />
           <Route exact path="/sign-out" component={SignOut} />

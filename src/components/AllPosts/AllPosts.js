@@ -10,16 +10,15 @@ const AllPosts = () => (
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
-
       return (
-        <RenderProperties>
-          <ul key="topPosts">
-            {data.allPosts.map(({ id, title, user }) => (
-              <li key={id}>
-                <Link to={`/post/${id}`}>
-                  {user ? `${user.name}` : "incognito"}, {title ? title : "***"}
-                </Link>
-                &nbsp;
+        <ul key="topPosts">
+          {data.allPosts.map(({ id, title, user }) => (
+            <li key={id}>
+              <Link to={`/post/${id}`}>
+                {user ? `${user.name}` : "incognito"}, {title ? title : "***"}
+              </Link>
+              &nbsp;
+              <RenderProperties isSignIn={false}>
                 <Mutation
                   mutation={DELETE_POST_MUTATION}
                   update={(cache, { data: { deletePost } }) => {
@@ -57,10 +56,10 @@ const AllPosts = () => (
                 </Mutation>
                 &nbsp;
                 <Link to={`/update-post/${id}`}>Edit</Link>
-              </li>
-            ))}
-          </ul>
-        </RenderProperties>
+              </RenderProperties>
+            </li>
+          ))}
+        </ul>
       );
     }}
   </Query>

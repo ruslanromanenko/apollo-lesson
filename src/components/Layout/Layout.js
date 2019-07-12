@@ -6,11 +6,12 @@ const Layout = ({ children }) => (
   <React.Fragment>
     <header>
       <nav>
-        <Link to="/"> Home </Link>|<Link to="/top-posts"> Top Posts </Link>|
-        <Link to="/all-posts"> All Posts </Link>|
-        <Link to="/create-user"> Create User </Link>|
-        <Link to="/sign-in"> Sign In </Link>|
-        <Link to="/sign-out"> Sign Out </Link>|
+        <Link to="/">All Users</Link> | <Link to="/top-posts">Top Posts</Link>
+        |&nbsp;
+        <Link to="/all-posts">All Posts</Link> |&nbsp;
+        <Link to="/create-user">Create User</Link> |&nbsp;
+        <Link to="/sign-in">Sign In</Link> |&nbsp;
+        <Link to="/sign-out">Sign Out</Link>
       </nav>
     </header>
     <main>{children}</main>
