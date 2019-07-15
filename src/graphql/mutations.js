@@ -64,6 +64,10 @@ export const DELETE_POST_MUTATION = gql`
   mutation deletePost($id: ID!) {
     deletePost(id: $id) {
       id
+      user {
+        id
+        name
+      }
     }
   }
 `;

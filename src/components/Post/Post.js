@@ -42,7 +42,8 @@ const Post = props => {
                 <RenderProperties isSignIn={false}>
                   <Mutation
                     mutation={DELETE_POST_MUTATION}
-                    onCompleted={() => {
+                    onCompleted={data => {
+                      console.log(data);
                       props.history.push("/all-posts");
                     }}
                   >

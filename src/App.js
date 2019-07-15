@@ -40,7 +40,7 @@ const App = () => (
           <Route exact path="/user-data/:userId" component={UserData} />
           <Route
             exact
-            path="/update-comment/:commentId"
+            path="/user-data/:userId/update-comment/:commentId"
             component={UpdateComment}
           />
           <Route exact path="/user/:userId/new-post" component={CreatePost} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { Mutation, Query } from "react-apollo";
 import classes from "./UpdateComment.module.css";
+
 import {
   DELETE_COMMENT_MUTATION,
   UPDATE_COMMENT_MUTATION
@@ -19,7 +20,6 @@ const UpdateComments = props => (
               if (params.loading) return <p>Loading...</p>;
               if (params.error) return <p>Error :(</p>;
               let text;
-              console.log(params);
               return (
                 <form
                   className={classes.UserData}
@@ -48,9 +48,8 @@ const UpdateComments = props => (
           </Mutation>
           <Mutation
             mutation={DELETE_COMMENT_MUTATION}
-            onCompleted={data => {
-              console.log(data);
-              // props.history.push(`/user-data/${userId}`);
+            onCompleted={() => {
+              props.history.push(`/user-data/${props.match.params.userId}`);
             }}
           >
             {(deleteComment, { loading, error, data }) => {

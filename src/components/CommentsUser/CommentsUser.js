@@ -14,7 +14,9 @@ const CommentsUser = props => (
         <ul key="topPosts">
           {data.allComments.map(({ id, text, user }) => (
             <li key={id}>
-              <Link to={`/update-comment/${id}`}>{text ? text : "***"}</Link>
+              <Link to={`/user-data/${props.userId}/update-comment/${id}`}>
+                {text ? text : "***"}
+              </Link>
             </li>
           ))}
         </ul>
