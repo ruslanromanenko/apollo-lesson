@@ -92,10 +92,6 @@ export const getQueryCommentsUser = userId =>
       allComments(filter: { user: { id: "${userId}" } }) {
         id
         text
-        user {
-          id
-          name
-        }
       }
     }
   `;

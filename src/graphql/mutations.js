@@ -96,6 +96,10 @@ export const CREATE_COMMENT_MUTATION = gql`
   mutation createComment($text: String!, $postId: ID, $userId: ID) {
     createComment(text: $text, postId: $postId, userId: $userId) {
       id
+      text
+      user {
+        id
+      }
     }
   }
 `;

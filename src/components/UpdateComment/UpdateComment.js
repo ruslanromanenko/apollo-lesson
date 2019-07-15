@@ -6,7 +6,11 @@ import {
   DELETE_COMMENT_MUTATION,
   UPDATE_COMMENT_MUTATION
 } from "../../graphql/mutations";
-import { getQueryComment } from "../../graphql/quearies";
+import {
+  getQueryComment,
+  getQueryCommentsPost,
+  getQueryCommentsUser
+} from "../../graphql/quearies";
 
 const UpdateComments = props => (
   <Query query={getQueryComment(props.match.params.commentId)}>
@@ -48,6 +52,20 @@ const UpdateComments = props => (
           </Mutation>
           <Mutation
             mutation={DELETE_COMMENT_MUTATION}
+            update={(cache, { data: { deleteComment } }) => {
+              const { allComments } = cache.readQuery({
+                query: getQueryCommentsUser(props.match.params.userId)
+              });
+
+              cache.writeQuery({
+                query: getQueryCommentsUser(props.match.params.userId),
+                data: {
+                  allComments: allComments.filter(
+                    comment => comment.id !== deleteComment.id
+                  )
+                }
+              });
+            }}
             onCompleted={() => {
               props.history.push(`/user-data/${props.match.params.userId}`);
             }}
