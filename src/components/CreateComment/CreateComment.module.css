@@ -1,0 +1,10 @@
+.CreateComment{
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    padding-top: 40px;
+}
+
+.CreateComment button{
+    max-width: 40%;
+}

@@ -1,0 +1,17 @@
+.UserData{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+}
+.UserData label{
+    width: 250px;
+}
+.UserData input{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.UserData button{
+    max-width: 30%;
+}
