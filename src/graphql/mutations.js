@@ -103,3 +103,13 @@ export const CREATE_COMMENT_MUTATION = gql`
     }
   }
 `;
+export const CREATE_FILE_MUTATION = gql`
+  mutation createFile($name: String!) {
+    createComment(name: $name) {
+      id
+      name
+      size
+      url
+    }
+  }
+`;

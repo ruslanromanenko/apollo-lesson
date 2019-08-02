@@ -3,6 +3,7 @@ import { Mutation, Query } from "react-apollo";
 import classes from "./UpdatePost.module.css";
 import { UPDATE_POST_MUTATION } from "../../graphql/mutations";
 import { getQueryPost } from "../../graphql/quearies";
+import CreateFile from "../CreateFile/CreateFile";
 
 const UpdatePost = props => (
   <Query query={getQueryPost(props.match.params.postId)}>
